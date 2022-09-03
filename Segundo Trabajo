@@ -1,0 +1,569 @@
+//Ejercicio 3.18:
+import java.util.Scanner;
+
+public class EJ318 {
+    public static void main(String[] args) {
+        //Se tiene la siguiente informacion de un empleado:
+        //codigo del empleado, nombres, nomero de horas trabajadas al mes,
+        //valor hora trabajada, porcentaje de retencion en la fuente.
+        //Haga un algoritmo que muestre: codigo, nombres, salario bruto y salario neto.
+        empleado uno = new empleado();
+        
+        Scanner myinfo = new Scanner(System.in);
+        System.out.print("Ingrese el codigo: ");
+        uno.codigo = myinfo.nextLine();
+        System.out.print("Ingrese el nombre: ");
+        uno.nombre = myinfo.nextLine();
+        System.out.print("Ingrese las horas (completas) trabajadas: ");
+        uno.horas = myinfo.nextInt();
+        System.out.print("Ingrese el salario por hora: ");
+        uno.valor = myinfo.nextInt();
+        System.out.print("Ingrese la retencion en la fuente, en porcentaje: ");
+        uno.retencion = myinfo.nextDouble();
+        
+        System.out.print("Codigo Empleado: " + uno.codigo + "\nNombre: " + uno.nombre
+        + "\nHoras trabajadas: " + uno.horas + "\nValor de la hora: " + uno.valor + "\n");
+        uno.salarios(uno.valor,uno.horas,uno.retencion);
+    }
+}
+
+class empleado {
+    //Atributos
+    String codigo;
+    String nombre;
+    int horas;
+    int valor;
+    double retencion;
+    //Metodos
+    public void salarios(int horas, int valor, double retencion) {
+    System.out.print("\nSalario Bruto: " + (horas*valor) + 
+    "\nSalario Neto: " + (horas*valor-(horas*valor*retencion/100)));
+    }
+}
+//Ejercicio 3.19:
+import java.util.Scanner;
+import java.lang.Math;
+
+public class EJ319 {
+    public static void main(String[] args) {
+        //Dado el valor del lado en un triangulo equilatero, haga un algoritmo que obtenga el
+        //perimetro, el valor de la altura y el area del triangulo.
+        triangulo figura = new triangulo();
+        
+        Scanner myinfo = new Scanner(System.in);
+        System.out.print("Ingrese la longitud del lado: ");
+        figura.lado = myinfo.nextDouble();
+        figura.propiedades(figura.lado);
+    }
+}
+
+class triangulo {
+    //Atributos
+    double lado;
+    //Metodos
+    public void propiedades(double lado) {
+    System.out.print("\nPerimetro: " + lado*3 + "\nAltura: " + (Math.sqrt(3)*lado)/2 + 
+    "\nAltura: " + (Math.pow(lado,2)*Math.sqrt(3))/4);
+    }
+}
+//Ejercicio 3.21:
+import java.util.Scanner;
+import java.lang.Math;
+
+public class EJ321 {
+    public static void main(String[] args) {
+        //Dados los tres lados de un triangulo, haga un algoritmo que encuentre: perimetro,
+        //semiperimetro y el area del triangulo.
+        triangulo figura = new triangulo();
+        
+        Scanner myinfo = new Scanner(System.in);
+        System.out.print("Ingrese la longitud del lado a: ");
+        figura.a = myinfo.nextDouble();
+        System.out.print("Ingrese la longitud del lado b: ");
+        figura.b = myinfo.nextDouble();
+        System.out.print("Ingrese la longitud del lado c: ");
+        figura.c = myinfo.nextDouble();
+        figura.propiedades(figura.a,figura.b,figura.c);
+    }
+}
+
+class triangulo {
+    //Atributos
+    double a;
+    double b;
+    double c;
+    //Metodos
+    public void propiedades(double a, double b, double c) {
+    double perim = a+b+c;
+    double semi = perim/2;
+    System.out.print("\nPerimetro: " + perim + "\nSemiperimetro: " + semi +
+    "\nArea: " + Math.sqrt(semi*(semi-a)*(semi-b)*(semi-c)));
+    }
+}
+//Ejercicio 4.7
+import java.util.Scanner;
+
+public class EJ47 {
+    public static void main(String[] args) {
+        //Hacer un algoritmo que, dados dos valores numericos A y B, escriba un mensaje diciendo
+        //si A es mayor, menor o igual a B.
+        double a,b;
+        
+        Scanner myinfo = new Scanner(System.in);
+        System.out.print("Ingrese el valor de a: ");
+        a = myinfo.nextDouble();
+        System.out.print("Ingrese el valor de b: ");
+        b = myinfo.nextDouble();
+        if (a>b) {
+            System.out.print("A es mayor a B");
+        }
+        else if (a<b) {
+            System.out.print("A es menor a B");
+        }
+        else if (a==b) {
+            System.out.print("A es igual a B");
+        }
+    }
+}
+//Ejercicio 4.10
+import java.util.Scanner;
+class EJ410 {
+    public static void main(String[] args) {
+        //Cierta universidad para liquidar el pago de matricula de un estudiante le exige los siguientes datos:
+        //- Numero de inscripcion
+        //- Nombres
+        //- Patrimonio.
+        //- Estrato social.
+        //La universidad cobra un valor constante para cada estudiante de $50.000. Si el patrimonio es mayor que $2000000 y el estrato superior a 3, se le incrementa un porcentaje del 3% sobre el patrimonio. Hacer un algoritmo que muestre:
+        //- Numero de inscripcion.
+        //- Nombres.
+        //- Pago de matricula.
+        double numInsc, pat, estSoc;
+        String nom;
+        Scanner myinfo = new Scanner(System.in);
+        
+        System.out.println("Ingrese el numero de inscripcion: ");
+        numInsc=myinfo.nextDouble();
+        System.out.println("Ingrese el nombre del estudiante: ");
+        nom=myinfo.next();
+        System.out.println("Ingrese el valor del patrimonio: ");
+        pat=myinfo.nextDouble();
+        System.out.println("Ingrese el estrato social del estudiante: ");
+        estSoc=myinfo.nextDouble();
+        
+        double base=50000;
+        if (pat>2000000 && estSoc>3){
+            base=base+(0.03*pat);
+        }
+        System.out.println("El estudiante con numero de inscripcion "+numInsc+" y nombre "+nom+" debe pagar:$"+base);
+        
+        
+    }
+}
+//Ejercicio 4.11
+import java.util.Scanner;
+
+class EJ411 {
+    public static void main(String[] args) {
+        //Escribir un algoritmo que reciba tres numeros enteros diferentes y muestre el mayor entre ellos
+        double a, b, c, mayor;
+        Scanner myinfo = new Scanner(System.in);
+        
+        System.out.println("Ingrese el valor del primer numero:");
+        a=myinfo.nextDouble();
+        System.out.println("Ingrese el valor del segundo numero:");
+        b=myinfo.nextDouble();
+        System.out.println("Ingrese el valor del tercer numero:");
+        c=myinfo.nextDouble();
+        
+        if (a>b && a>c){
+            mayor=a;
+        }
+        else if (b>c){
+            mayor=b;
+        }
+        else{
+            mayor=c;
+        }
+        System.out.println("El mayor numero es: "+mayor);
+    }
+}
+//Ejercicio 4.12
+import java.util.Scanner;
+
+class EJ412 {
+    public static void main(String[] args) {
+        //Determinar la cantidad de dinero recibida por un trabajador por concepto de las horas semanales trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto se considera horas extras y se pagan al doble de una hora normal, cuando no exceden de 8; si las horas extras exceden de 8, se pagan las primeras 8 al doble de lo que se paga una hora normal y el resto al triple. Del trabajador se conocen los siguientes datos: nombres, numero de horas trabajadas en la semana y valor recibido por una hora normal de trabajo.
+        Scanner myinfo = new Scanner(System.in);
+        
+        String nom;
+        double numhora, valhora, horaext, horaextplus, total;
+        System.out.println("Ingrese el nombre del trabajador:");
+        nom=myinfo.next();
+        System.out.println("Ingrese el valor de la hora:");
+        valhora=myinfo.nextDouble();
+        System.out.println("Ingrese la cantidad de hora trabajadas:");
+        numhora=myinfo.nextDouble();
+        
+        if(numhora>40){
+            horaext=numhora-40;
+            if (horaext>8){
+                horaextplus=horaext-8;
+                total=40*valhora+16*valhora+horaextplus*3*valhora;
+            }
+            else{
+                total=40*valhora+horaext*2*valhora;
+            }
+        }
+        else{
+            total=numhora*valhora;
+        }
+        System.out.println("El trabajador "+nom+" gano un total de $"+total);
+
+    }
+}
+//Ejercicio 4.13
+import java.util.Scanner;
+
+class EJ413 {
+    public static void main(String[] args) {
+        //Un almacen efectua una promocion en la cual se hace un descuento sobre el valor de la compra total, segun el color de la bolita que el cliente saque al pagar en caja. Si la bolita es blanca no se le hara descuento alguno, si es verde se le hara un 10% de descuento, si es amarilla un 25%, si es azul un50% y si es roja un 100%. Hacer un algoritmo para determinar la cantidad final que un cliente debera pagar por su compra. Se sabe que solo hay bolitas de los colores mencionados
+        Scanner myinfo = new Scanner(System.in);
+        double total, compra, off;
+        String color;
+        
+        System.out.println("Ingrese el valor de la compra:");
+        compra=myinfo.nextDouble();
+        System.out.println("Ingrese el color del helado:");
+        color=myinfo.next();
+        if(color.equals("Blanco")){
+            off=0;
+        }
+        else if(color.equals("Verde")){
+            off=10;
+        }
+        else if(color.equals("Amarillo")){
+            off=25;
+        }
+        else if(color.equals("Azul")){
+            off=50;
+        }
+        else if(color.equals("Rojo")){
+            off=100;
+        }
+        else{
+         off=0;
+        }
+      total=compra-((off*compra)/100);
+      System.out.println("El valor total de la compra es: $"+total);
+    }
+}
+//Ejercicio 4.14
+import java.util.Scanner;
+
+class EJ414 {
+    public static void main(String[] args) {
+        //Una empresa con tres departamentos tiene establecido un plan de incentivos para sus vendedores. Al final del periodo, a cada departamento se le pide el importe global de las ventas. A los departamentos que excedan el 33% de las ventas totales se les adiciona al salario de los vendedores un porcentaje equivalente al 20% del salario mensual. Las nominas de los tres departamentos son iguales.
+        Scanner myinfo = new Scanner(System.in);
+        double ven1, ven2, ven3, wagebase, sales, percsales, wage1, wage2, wage3;
+        System.out.println("Ingrese el salario base de los empleados:");
+        wagebase=myinfo.nextDouble();
+        System.out.println("Ingrese la cantidad de ventas del primer departamento:");
+        ven1=myinfo.nextDouble();
+        System.out.println("Ingrese la cantidad de ventas del segundo departamento:");
+        ven2=myinfo.nextDouble();
+        System.out.println("Ingrese la cantidad de ventas del tercer departamento:");
+        ven3=myinfo.nextDouble();
+        sales=ven1+ven2+ven3;
+        percsales=0.33*sales;
+        if (ven1>percsales){
+            wage1=wagebase+0.2*wagebase;
+        }
+        else{
+            wage1=wagebase;
+        }
+        if (ven2>percsales){
+            wage2=wagebase+0.2*wagebase;
+        }
+        else{
+            wage2=wagebase;
+        }
+        if (ven3>percsales){
+            wage3=wagebase+0.2*wagebase;
+        }
+        else{
+            wage3=wagebase;
+        }
+        System.out.println("El salario de los trabajadores del departamento 1 es: "+wage1+"\nEl salario de los trabajadores del departamento 2 es: "+wage2+"\nEl salario de los trabajadores del departamento 3 es: "+wage3);
+       
+    }
+}
+//Ejercicio 4.15
+import java.util.Scanner;
+
+class EJ415 {
+    public static void main(String[] args) {
+        //Se tienen cuatro esferas (A, B, C, D) de las cuales se sabe que tres son de igual peso y una diferente. Elaborar un algoritmo que determine cual es la esfera diferente y si es de mayor o menor peso.
+        Scanner myinfo = new Scanner(System.in);
+        double ball1, ball2, ball3, ball4;
+        System.out.println("Ingrese el peso de la esfera 1:");
+        ball1=myinfo.nextDouble();
+        System.out.println("Ingrese el peso de la esfera 2:");
+        ball2=myinfo.nextDouble();
+        System.out.println("Ingrese el peso de la esfera 3:");
+        ball3=myinfo.nextDouble();
+        System.out.println("Ingrese el peso de la esfera 4:");
+        ball4=myinfo.nextDouble();
+        
+        if (ball1==ball2 && ball1==ball3){
+            if (ball4>ball1){
+                System.out.println("La esfera 4 es diferente, y es de mayor peso.");
+            }
+            else if (ball4<ball1){
+                System.out.println("La esfera 4 es diferente, y es de menor peso.");
+            }
+        }
+        else if (ball2==ball3 && ball2==ball4){
+            if(ball1>ball2){
+                System.out.println("La esfera 1 es diferente, y es de mayor peso.");
+            }
+            else if (ball1<ball2){
+                System.out.println("La esfera 1 es diferente, y es de menor peso.");
+            }
+        }
+        else if (ball1==ball3 && ball1==ball4){
+            if(ball2>ball1){
+                System.out.println("La esfera 2 es diferente, y es de mayor peso.");
+            }
+            else if (ball2<ball1){
+                System.out.println("La esfera 2 es diferente, y es de menor peso.");
+            }
+        }
+        else if (ball1==ball2 && ball1==ball4){
+            if(ball3>ball1){
+                System.out.println("La esfera 3 es diferente, y es de mayor peso.");
+            }
+            else if (ball3<ball1){
+                System.out.println("La esfera 3 es diferente, y es de menor peso.");
+            }
+        }
+}
+
+//Ejercicio 4.22
+import java.util.Scanner;
+
+class EJ422 {
+    public static void main(String[] args) {
+        //Elaborar un algoritmo que entre el nombre de un empleado, su salario basico por hora y el numero de horas trabajadas en el mes; escriba su nombre y salario mensual si este es mayor de $450.000, de lo contrario escriba solo el nombre.
+        Scanner myinfo = new Scanner(System.in);
+        String nom;
+        double wagehour, numhora, wagefull;
+        System.out.println("Ingrese el nombre del empleado:");
+        nom=myinfo.next();
+        System.out.println("Ingrese el salario por hora:");
+        wagehour=myinfo.nextDouble();
+        System.out.println("Ingrese la cantidad de horas trabajadas en el mes:");
+        numhora=myinfo.nextDouble();
+        
+        wagefull=numhora*wagehour;
+        if(wagefull>450000){
+            System.out.println(nom+"\n"+wagefull);
+        }
+        else{
+            System.out.println(nom);
+        }
+    }
+}
+//Ejercicio 4.23
+import java.util.Scanner;
+
+class EJ423 {
+    public static void main(String[] args) {
+        //Dados los valores A, B y C que son los parametros de una ecuacion de segundo grado, elaborar un algoritmo para hallar las posibles soluciones de dicha ecuacion.
+        Scanner myinfo = new Scanner(System.in);
+        double a, b, c, det, ans1, ans2;
+         System.out.println("Ingrese el valor del parametro A:");
+         a=myinfo.nextDouble();
+         System.out.println("Ingrese el valor del parametro B:");
+         b=myinfo.nextDouble();
+         System.out.println("Ingrese el valor del parametro C:");
+         c=myinfo.nextDouble();
+        
+        det=(Math.pow(b, 2)-4*a*c);
+        if (det<0){
+            System.out.println("La ecuacion no tiene respuesta en los numeros reales");
+        }
+        else if (det==0){
+            ans1=(-b+Math.sqrt(Math.pow(b,2)-4*a*c))/2*a;
+            System.out.println("La ecuacion tiene una solucion, la cual es: "+ans1);
+        }
+        else if (det>0){
+            ans1=(-b+Math.sqrt(Math.pow(b,2)-4*a*c))/2*a;
+            ans2=(-b-Math.sqrt(Math.pow(b,2)-4*a*c))/2*a;
+            System.out.println("La ecuacion tiene dos soluciones, las cuales son: "+ans1+" y "+ans2);
+        }
+        
+    }
+}
+//Ejercicio 4.24
+import java.util.Scanner;
+
+class EJ424 {
+    public static void main(String[] args) {
+        //Se tienen tres esferas (A, B, C) de diferentes pesos. Elabore un algoritmo que determine cual tiene mayor peso.
+        double a, b, c, mayor;
+        Scanner myinfo = new Scanner(System.in);
+        
+        System.out.println("Ingrese el peso de la primera esfera:");
+        a=myinfo.nextDouble();
+        System.out.println("Ingrese el peso de la segunda esfera:");
+        b=myinfo.nextDouble();
+        System.out.println("Ingrese el peso de la tercera esfera:");
+        c=myinfo.nextDouble();
+        
+        if (a>b && a>c){
+            mayor=a;
+            System.out.println("La esfera con mayor peso es: A");
+        }
+        else if (b>c){
+            mayor=b;
+            System.out.println("La esfera con mayor peso es: B");
+        }
+        else{
+            mayor=c;
+            System.out.println("La esfera con mayor peso es: C");
+        }
+    }
+}
+//Parte 2
+
+import java.lang.Math;
+
+public class PruebaFiguras  {
+    public static void main(String[] args) {
+        Circulo figura1 = new Circulo(2);
+        Rectangulo figura2 = new Rectangulo(1,2);
+        Cuadrado figura3 = new Cuadrado(3);
+        TrianguloRectangulo figura4 = new TrianguloRectangulo(3,5);
+        Rombo figura5 = new Rombo(1,2);
+        Trapecio figura6 = new Trapecio(3,4,5,6,3);
+        System.out.println("El area del circulo es = " + figura1.calcularArea());
+        System.out.println("El perimetro del circulo es = " + figura1.calcularPerimetro());
+        System.out.println("El area del rectangulo es = " + figura2.calcularArea());
+        System.out.println("El perimetro del rectangulo es = " + figura2.calcularPerimetro());
+        System.out.println("El area del cuadrado es = " + figura3.calcularArea());
+        System.out.println("El perimetro del cuadrado es = " + figura3.calcularPerimetro());
+        System.out.println("El area del triangulo es = " + figura4.calcularArea());
+        System.out.println("El perimetro del triangulo es = " + figura4.calcularPerimetro());
+        figura4.determinarTipoTriangulo();
+        System.out.println("El area del rombo es = " + figura5.calcularArea());
+        System.out.println("El perimetro del rombo es = " + figura5.calcularPerimetro());
+        System.out.println("El area del trapecio es = " + figura6.calcularArea());
+        System.out.println("El perimetro del trapecio es = " + figura6.calcularPerimetro());
+    }
+}
+
+
+class Circulo {
+    int radio;
+    
+    Circulo(int radio) {
+    this.radio = radio;
+    }
+    
+    double calcularArea() {
+    return Math.PI*Math.pow(radio,2);
+    }
+    
+    double calcularPerimetro() {
+    return 2*Math.PI*radio;
+    }
+}
+class Rectangulo {
+    int base;
+    int altura;
+    Rectangulo(int base, int altura) {
+    this.base = base;
+    this.altura = altura;
+    }
+    double calcularArea() {
+    return base * altura;
+    }
+    double calcularPerimetro() {
+    return (2 * base) + (2 * altura);
+    }
+}
+class Cuadrado {
+    int lado;
+    public Cuadrado(int lado) {
+    this.lado = lado;
+    }
+    double calcularArea() {
+    return lado*lado;
+    }
+    double calcularPerimetro() {
+    return (4*lado);
+    }
+}
+class TrianguloRectangulo {
+    int base;
+    int altura;
+    public TrianguloRectangulo(int base, int altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return (base * altura / 2);
+    }
+    double calcularPerimetro() {
+        return (base + altura + calcularHipotenusa());
+    }
+    double calcularHipotenusa() {
+        return Math.pow(base*base + altura*altura, 0.5);
+    }
+    void determinarTipoTriangulo() {
+        if ((base == altura) && (base == calcularHipotenusa()) && (altura
+            == calcularHipotenusa()))
+            System.out.println("Es un triangulo equilatero");
+        else if ((base != altura) && (base != calcularHipotenusa()) &&
+            (altura != calcularHipotenusa()))
+            System.out.println("Es un triangulo escaleno");
+    else
+            System.out.println("Es un triangulo isosceles");
+    }
+}
+class Rombo {
+    int diag1;
+    int diag2;
+    public Rombo(int diag1, int diag2) {
+        this.diag1 = diag1;
+        this.diag2 = diag2;
+    }
+    double calcularArea() {
+        return (diag1 * diag2 / 2);
+    }
+    double calcularPerimetro() {
+        return (2*Math.sqrt((Math.pow(diag1,2)+Math.pow(diag2,2))));
+    }
+}
+class Trapecio {
+    int base1;
+    int base2;
+    int lado1;
+    int lado2;
+    int altura;
+    public Trapecio(int base1, int base2, int lado1, int lado2, int altura) {
+        this.base1 = base1;
+        this.base2 = base2;
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+        this.altura = altura;
+    }
+    double calcularArea() {
+        return (base1+base2 / 2)*altura;
+    }
+    double calcularPerimetro() {
+        return (base1+base2+lado1+lado2);
+    }
+}
+

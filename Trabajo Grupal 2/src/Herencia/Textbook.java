@@ -1,17 +1,17 @@
 package Herencia;
-public class Novelas extends Libro {
+public class Textbook extends Libro {
     /*vars init*/
-    String genero;
+    String curso;
     /*constructor*/
-    public Novelas(String titulo, String autor, double precio,String genero){
+    public Textbook(String titulo, String autor, double precio, String curso){
         super(titulo, autor, precio);
-        this.genero = genero;
+        this.curso = curso;
     }
     /*método print*/
-    public void shownovel(){
+    public void showtextbook(){
         System.out.println("El título del libro es: " + titulo);
         System.out.println("El autor del libro es: " + autor);
         System.out.println("El precio del libro es: " + precio);
-        System.out.println("El género al que pertenece el libro es: " + genero);
-    }
+        System.out.println("El curso al que pertenece el libro es: " + curso);
+    }   
 }

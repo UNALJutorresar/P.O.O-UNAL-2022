@@ -1,17 +1,18 @@
-
 package Herencia;
-import java.util.*;
-public class TexUNAL extends Curso {
+public class TexUNAL extends Textbook {
+    /*vars init*/
     String facultad;
-    public TexUNAL (String titulo, String autor, double precio, String curso){
+    /*constructor*/
+    public TexUNAL (String titulo, String autor, double precio, String curso, String facultad){
         super(titulo, autor, precio, curso);
-        Scanner input = new Scanner(System.in);
-        System.out.println("Ingrese la facultad que publicó el libro:");
-        facultad=input.next();
+        this.facultad = facultad;
     }
-    public void showBook(Libro lib){
-        super.showBook(lib);
-        System.out.println("La facultad que publicó el libro es: "+facultad);
+    /*método print*/
+    public void showtexunal(){
+        System.out.println("El título del libro es: " + titulo);
+        System.out.println("El autor del libro es: " + autor);
+        System.out.println("El precio del libro es: " + precio);
+        System.out.println("El curso al que pertenece el libro es: " + curso);
+        System.out.println("La facultad que publicó el libro es: "+ facultad);
     }   
-    
 }

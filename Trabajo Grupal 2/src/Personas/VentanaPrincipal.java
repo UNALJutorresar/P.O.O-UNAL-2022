@@ -152,6 +152,16 @@ editarPersona(listaNombres.getSelectedIndex()); // Se invoca borrar editar
 }
 
 private void editarPersona(int indice) {
+// Se colocan todos los campos de texto con lo que tenía la persona
+String data = "";
+if (listaNombres.getSelectedIndex() != -1) {
+    data = (String) listaNombres.getSelectedValue();
+    String[] componentes = data.split("-");
+    campoNombre.setText(componentes[0]);
+    campoApellidos.setText(componentes[1]);
+    campoTeléfono.setText(componentes[2]);
+    campoDirección.setText(componentes[3]);
+}
     
 /* Removemos a la persona temporalmente*/
 if (indice >= 0) { // Si la posición existe
@@ -161,44 +171,30 @@ lista.eliminarPersona(indice); /* Se elimina la persona seleccionada del vector 
 JOptionPane.showMessageDialog(null, "Debe seleccionar un elemento","Error", JOptionPane.ERROR_MESSAGE);
 }
 
-// Se colocan todos los campos de texto con lo que tenía la persona
-campoNombre.setText("");
-campoApellidos.setText("");
-campoTeléfono.setText("");
-campoDirección.setText("");
-
-/* Se obtienen los campos de texto ingresados y se crea una persona */
-Persona p = new Persona(campoNombre.getText(),
-campoApellidos.getText(),
-campoTeléfono.getText(), campoDirección.getText());
-lista.añadirPersona(p); /* Se añade una persona al vector de
-personas */
-String elemento = campoNombre.getText() + "-" +
-campoApellidos.getText() +
-"-" + campoTeléfono.getText() + "-" + campoDirección.
-getText();
-modelo.addElement(elemento); /* Se agrega el texto con los
-datos de la persona al JList */
-listaNombres.setModel(modelo);
-// Se colocan todos los campos de texto nulos
-campoNombre.setText("");
-campoApellidos.setText("");
-campoTeléfono.setText("");
-campoDirección.setText("");
 }
 
 private void añadirPersona() {
 /* Se obtienen los campos de texto ingresados y se crea una
 persona */
-Persona p = new Persona(campoNombre.getText(),
-campoApellidos.getText(),
-campoTeléfono.getText(), campoDirección.getText());
-lista.añadirPersona(p); /* Se añade una persona al vector de
-personas */
-String elemento = campoNombre.getText() + "-" +
-campoApellidos.getText() +
-"-" + campoTeléfono.getText() + "-" + campoDirección.
-getText();
+//comparamos camponombre y campoapellidos contra cada elemento de la lista. si se halla uno igual, imprimir
+String data = "";
+for (int i = 0; i < listaNombres.getModel().getSize(); i++) {
+    Object item = listaNombres.getModel().getElementAt(i);
+    data = (String) item;
+    String[] componentes = data.split("-");
+    if ((componentes[0].equals(campoNombre.getText()) && componentes[1].equals(campoApellidos.getText()))){
+    System.out.println("Nombre " + componentes[0] + " y apellido " + componentes[1] + " en uso!");
+    } else if (componentes[0].equals(campoNombre.getText())){
+    System.out.println("Nombre " + componentes[0] + " en uso!");  
+    } else if (componentes[1].equals(campoApellidos.getText())){
+    System.out.println("Apellido " + componentes[1] + " en uso!");
+    }
+}
+
+Persona p = new Persona(campoNombre.getText(), campoApellidos.getText(), campoTeléfono.getText(), campoDirección.getText());
+lista.añadirPersona(p); /* Se añade una persona al vector de personas */
+String elemento = campoNombre.getText() + "-" + campoApellidos.getText() + "-" + campoTeléfono.getText() + "-" + campoDirección.getText();
+
 modelo.addElement(elemento); /* Se agrega el texto con los
 datos de la persona al JList */
 listaNombres.setModel(modelo);

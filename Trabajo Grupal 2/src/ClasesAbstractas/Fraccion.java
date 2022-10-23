@@ -1,34 +1,30 @@
 package ClasesAbstractas;
 import java.util.*;
 public class Fraccion extends Numerica {
-    int a, b;
+    double a, b;
     
-    public String getString(int a, int b){
+    public String getString(double a, double b){
         return "El valor String del numero es: "+String.valueOf(a+"/"+b);
     }
-    public boolean equals(int a, int b, int ob){
+    public String equals(double a, double b, double ob){
         
         if (a==ob){
-            System.out.println("El numerador es igual al objeto");
-            return true;
+            return "El numerador es igual al objeto";
         }
         else if (b==ob){
-            System.out.println("El denominador es igual al objeto");
-            return true;
+            return "El denominador es igual al objeto";
         }
         else if (b==ob && a==ob){
-           System.out.println("Tanto el denominador como el numerador son iguales al objeto");
-            return true;
+           return "Tanto el denominador como el numerador son iguales al objeto";
         }
         else{
-            System.out.println("Ni el denominador ni el numerador son iguales al objeto");
-            return false;
+            return "Ni el denominador ni el numerador son iguales al objeto";
         }
     }
-    public int sumar(int a, int b){
+    public double sumar(double a, double b){
         return a+b;
     }  
-   public int restar(int a, int b){
+   public double restar(double a, double b){
        if (a>b){
            return a-b;
        }
@@ -39,19 +35,11 @@ public class Fraccion extends Numerica {
            return a-b;
        }
    }
-   public int multiplicar(int a, int b){
+   public double multiplicar(double a, double b){
        return a*b;
    }
-   public int dividir(int a, int b){
-        if (a>b){
+   public double dividir(double a, double b){
            return a/b;
-       }
-       else if (a<b){
-           return b/a;
-       }
-       else{
-           return a/b;
-       }
    }
 
     @Override

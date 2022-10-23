@@ -15,13 +15,9 @@ public class Prueba  {
         Fraccion abc=new Fraccion();
         System.out.println(abc.getString(numer, denom));
         System.out.println(abc.equals(numer, denom, objectifywomen));
-        System.out.println(abc.multiplicar(denom, numer));
-        System.out.println(abc.dividir(numer, denom));
-        System.out.println(abc.sumar(numer, denom));
-        System.out.println(abc.restar(numer, denom));
-     
-   
-        
+        System.out.println("a*b es igual a " + abc.multiplicar(denom, numer));
+        System.out.println("a dividido b es igual a " + abc.dividir(numer, denom));
+        System.out.println("a+b es igual a " + abc.sumar(numer, denom));
+        System.out.println("a-b es igual a " + abc.restar(numer, denom));
     }
-    
 }

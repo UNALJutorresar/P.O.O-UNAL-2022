@@ -44,12 +44,6 @@ public class VoltageForm extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Voltaje");
 
-        txtVoltage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVoltageActionPerformed(evt);
-            }
-        });
-
         btnCalc.setText("Calcular");
         btnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,10 +120,6 @@ public class VoltageForm extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtVoltageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoltageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVoltageActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();

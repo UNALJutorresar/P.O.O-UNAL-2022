@@ -44,18 +44,6 @@ public class CurrentForm extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Corriente");
 
-        txtVoltage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVoltageActionPerformed(evt);
-            }
-        });
-
-        txtResistance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResistanceActionPerformed(evt);
-            }
-        });
-
         btnCalc.setText("Calcular");
         btnCalc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,14 +119,6 @@ public class CurrentForm extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtVoltageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoltageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtVoltageActionPerformed
-
-    private void txtResistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResistanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtResistanceActionPerformed
 
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         double current, resistance, voltage;

@@ -1,4 +1,4 @@
-package Menus;
+package Ejercicio1;
 
 public class Pitagoras {
 public static double calc_hipotenusa(double catetoA, double catetoB){

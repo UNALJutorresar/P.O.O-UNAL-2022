@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Menus;
+package Ejercicio1;
 
 /**
  *
  * @author Camilo
  */
-public class VoltageForm extends javax.swing.JInternalFrame {
+public class PitForm extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VoltageForm
+     * Creates new form PitForm
      */
-    public VoltageForm() {
+    public PitForm() {
         initComponents();
     }
 
@@ -29,20 +29,26 @@ public class VoltageForm extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCurrent = new javax.swing.JTextField();
-        txtResistance = new javax.swing.JTextField();
-        txtVoltage = new javax.swing.JTextField();
+        txtHipotenusa = new javax.swing.JTextField();
+        txtB = new javax.swing.JTextField();
+        txtA = new javax.swing.JTextField();
         btnCalc = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
-        setTitle("Calcular Voltaje");
+        setTitle("Calcular Hipotenusa");
 
-        jLabel1.setText("Corriente");
+        jLabel1.setText("Lado A");
 
-        jLabel2.setText("Resistencia");
+        jLabel2.setText("Lado B");
 
-        jLabel3.setText("Voltaje");
+        jLabel3.setText("Hipotenusa");
+
+        txtA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAActionPerformed(evt);
+            }
+        });
 
         btnCalc.setText("Calcular");
         btnCalc.addActionListener(new java.awt.event.ActionListener() {
@@ -72,45 +78,45 @@ public class VoltageForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtVoltage))
+                                .addComponent(txtHipotenusa))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtResistance))
+                                .addComponent(txtB))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                        .addGap(39, 39, 39)
                         .addComponent(btnCalc)
-                        .addGap(39, 39, 39)
+                        .addGap(42, 42, 42)
                         .addComponent(btnDel)
-                        .addGap(39, 39, 39)
+                        .addGap(43, 43, 43)
                         .addComponent(btnExit)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtResistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtVoltage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(txtHipotenusa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalc)
                     .addComponent(btnDel)
@@ -121,26 +127,30 @@ public class VoltageForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAActionPerformed
+
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-        double current, resistance, voltage;
-        current=0;
-        resistance=0;
-        voltage=0;
-        txtCurrent.setText("");
-        txtResistance.setText("");
-        txtVoltage.setText("");
+        double hipotenusa, catetoA, catetoB;
+        hipotenusa=0;
+        catetoA=0;
+        catetoB=0;
+        txtA.setText("");
+        txtB.setText("");
+        txtHipotenusa.setText("");
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
-        double current, resistance, voltage;
-        current = Double.parseDouble(txtCurrent.getText());
-        resistance = Double.parseDouble(txtResistance.getText());
-        voltage = Voltage.calc_voltaje(current, resistance);
-        txtVoltage.setText(String.valueOf(voltage));
+        double hipotenusa, catetoA, catetoB;
+        catetoA = Double.parseDouble(txtA.getText());
+        catetoB = Double.parseDouble(txtB.getText());
+        hipotenusa = Pitagoras.calc_hipotenusa(catetoA, catetoB);
+        txtHipotenusa.setText(String.valueOf(hipotenusa));
     }//GEN-LAST:event_btnCalcActionPerformed
 
 
@@ -151,8 +161,8 @@ public class VoltageForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtCurrent;
-    private javax.swing.JTextField txtResistance;
-    private javax.swing.JTextField txtVoltage;
+    private javax.swing.JTextField txtA;
+    private javax.swing.JTextField txtB;
+    private javax.swing.JTextField txtHipotenusa;
     // End of variables declaration//GEN-END:variables
 }

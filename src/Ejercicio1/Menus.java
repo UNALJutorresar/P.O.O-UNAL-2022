@@ -1,4 +1,4 @@
-package Menus;
+package Ejercicio1;
 import javax.swing.JFrame;
 
 public class Menus {

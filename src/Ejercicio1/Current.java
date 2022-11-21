@@ -1,4 +1,4 @@
-package Menus;
+package Ejercicio1;
 public class Current {
 public static double calc_current(double voltage, double resistance){
     double current;

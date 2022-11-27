@@ -1,0 +1,4 @@
+cedula1, nombre1, apellido1
+cedula2, nombre2, apellido2
+cedula3, nombre3, apellido3
+cedula4, nombre4, apellido4

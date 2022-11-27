@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package trabajo.pkgfinal;
 
-/**
- *
- * @author Camilo
- */
-public class TrabajoFinal {
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+public class TrabajoFinal {
+    // FileNotFoundException es obligatorio
+    public static void main(String[] args) throws FileNotFoundException {
+        //Iniciamos array of arrays
+        List<String[]> reg = new ArrayList<>();
+        //Leemos archivo
+        File file = new File("C:\\Users\\Camilo\\Desktop\\P.O.O\\Trabajo Final\\trabajo.txt");
+        //Iniciamos objeto Scanner
+        Scanner sc = new Scanner(file);
+        //Loop, lee el archivo linea por linea "\n" separator
+        while (sc.hasNextLine()) {
+            // Los registros en el archivo están separados por ", "
+            String[] componentes = sc.nextLine().split(", ");
+            // Append a la lista
+            reg.add(componentes);
+        }
+        //Imprimimos según índice
+        System.out.println(Arrays.toString(reg.get(0)));
+        System.out.println(Arrays.toString(reg.get(1)));
+    } 
 }

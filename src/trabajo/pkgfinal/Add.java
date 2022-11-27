@@ -4,16 +4,18 @@
  */
 package trabajo.pkgfinal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Add extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Add
-     */
+    private datalist list;
+    
     public Add() {
+        list=new datalist();
         initComponents();
     }
 
@@ -44,6 +46,11 @@ public class Add extends javax.swing.JFrame {
         lblid.setText("Cédula");
 
         add.setText("Añadir");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         exit.setText("Cerrar");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -105,9 +112,26 @@ public class Add extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        
     }//GEN-LAST:event_exitActionPerformed
-
+    
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        addContact();
+    }//GEN-LAST:event_addActionPerformed
+    private void addContact(){
+    try{
+        
+        String v1=name.getText();
+        String v2=lastname.getText();
+        String v3=id.getText();
+        contact e=new contact(v1, v2, v3);
+        list.addList(e);
+        JOptionPane.showMessageDialog(this,"El contacto ha sido agregado","Mensaje",JOptionPane.INFORMATION_MESSAGE,null);
+    } catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
+    }
+}
     /**
      * @param args the command line arguments
      */

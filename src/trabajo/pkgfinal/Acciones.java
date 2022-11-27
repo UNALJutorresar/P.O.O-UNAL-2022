@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Camilo
  */
 public class Acciones extends javax.swing.JFrame {
-
+    File file;
     datalist contacts;
     public Acciones() {
         contacts=new datalist();
@@ -80,19 +80,19 @@ public class Acciones extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(del)
                     .addComponent(view)
                     .addComponent(edit)
                     .addComponent(add)
                     .addComponent(savebtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(add)
                 .addGap(18, 18, 18)
                 .addComponent(edit)
@@ -102,7 +102,7 @@ public class Acciones extends javax.swing.JFrame {
                 .addComponent(view)
                 .addGap(18, 18, 18)
                 .addComponent(savebtn)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -110,6 +110,7 @@ public class Acciones extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         Add add=new Add();
+        add.setVisible(true);
     }//GEN-LAST:event_addActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
@@ -126,15 +127,15 @@ public class Acciones extends javax.swing.JFrame {
     }//GEN-LAST:event_viewActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        JFileChooser fc=new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int resp=fc.showOpenDialog(this);
+        int resp = fc.showOpenDialog(this);
         if(resp==JFileChooser.APPROVE_OPTION){
-            File dir=fc.getSelectedFile();
-            String dirnom=dir.getName();
+            File dir = fc.getSelectedFile();
+            String dirnom = dir.getName();
             try{
             String content=contacts.convert();
-            File file=new File(dirnom+"\\"+"I_Love_POO.txt");
+            file = new File(dir + "\\I_Love_POO.txt");
             file.createNewFile();
             FileWriter fw=new FileWriter(file);
             BufferedWriter bw=new BufferedWriter(fw);
@@ -146,7 +147,6 @@ public class Acciones extends javax.swing.JFrame {
             e.printStackTrace();
         }
         }
-        
     }//GEN-LAST:event_savebtnActionPerformed
 
     /**

@@ -4,16 +4,21 @@
  */
 package trabajo.pkgfinal;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Acciones extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Acciones
-     */
+    datalist contacts;
     public Acciones() {
+        contacts=new datalist();
         initComponents();
     }
 
@@ -31,6 +36,7 @@ public class Acciones extends javax.swing.JFrame {
         del = new javax.swing.JButton();
         edit = new javax.swing.JButton();
         view = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +68,13 @@ public class Acciones extends javax.swing.JFrame {
             }
         });
 
+        savebtn.setText("Guardar Datos");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,7 +85,8 @@ public class Acciones extends javax.swing.JFrame {
                     .addComponent(del)
                     .addComponent(view)
                     .addComponent(edit)
-                    .addComponent(add))
+                    .addComponent(add)
+                    .addComponent(savebtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,27 +100,54 @@ public class Acciones extends javax.swing.JFrame {
                 .addComponent(del)
                 .addGap(18, 18, 18)
                 .addComponent(view)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(savebtn)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
+        Add add=new Add();
     }//GEN-LAST:event_addActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
+        Edit edit=new Edit();
     }//GEN-LAST:event_editActionPerformed
 
     private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
-        // TODO add your handling code here:
+        Delete del=new Delete();// TODO add your handling code here:
     }//GEN-LAST:event_delActionPerformed
 
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
         // TODO add your handling code here:
+        View view=new View();
     }//GEN-LAST:event_viewActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+        JFileChooser fc=new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int resp=fc.showOpenDialog(this);
+        if(resp==JFileChooser.APPROVE_OPTION){
+            File dir=fc.getSelectedFile();
+            String dirnom=dir.getName();
+            try{
+            String content=contacts.convert();
+            File file=new File(dirnom+"\\"+"I_Love_POO.txt");
+            file.createNewFile();
+            FileWriter fw=new FileWriter(file);
+            BufferedWriter bw=new BufferedWriter(fw);
+            bw.write(content);
+            bw.close();
+            String msg="El archivo se ha creado en la dirección: "+dirnom;
+            JOptionPane.showMessageDialog(this, msg, "Mensaje", JOptionPane.INFORMATION_MESSAGE, null);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        }
+        
+    }//GEN-LAST:event_savebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +189,7 @@ public class Acciones extends javax.swing.JFrame {
     private javax.swing.JButton del;
     private javax.swing.JButton edit;
     private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JButton savebtn;
     private javax.swing.JButton view;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
 public class datalist {
     public Vector list;
     public datalist(){
@@ -12,6 +11,9 @@ public class datalist {
     }
     public void addList(contact a){
         list.add(a);
+    }
+    public void remove(int index){
+        list.remove(index);
     }
     public String[][] matrix(){
         String data[][]=new String[list.size()][3];

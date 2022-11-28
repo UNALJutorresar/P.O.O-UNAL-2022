@@ -2,9 +2,9 @@
 package trabajo.pkgfinal;
 
 public class contact {
-    private final String nom;
-    private final String lastn;
-    private final String id;
+    private String nom;
+    private String lastn;
+    private String id;
     
     public contact(String nom, String lastn, String id){
     this.nom=nom;

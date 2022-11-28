@@ -4,16 +4,17 @@
  */
 package trabajo.pkgfinal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Edit extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Add
-     */
-    public Edit() {
+    datalist list;
+    public Edit(datalist list) {
+        this.list=list;
         initComponents();
     }
 
@@ -49,6 +50,11 @@ public class Edit extends javax.swing.JFrame {
         lblindex.setText("Índice");
 
         add.setText("Modificar");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         exit.setText("Cerrar");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -128,48 +134,43 @@ public class Edit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
     private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
-        // TODO add your handling code here:
+        String[][] matrix=list.matrix();
+        try{
+            int cock=Integer.parseInt(index.getText())-1;
+            String v1=matrix[cock][0];
+            String v2=matrix[cock][1];
+            String v3=matrix[cock][2];
+            name.setText(v1);
+            lastname.setText(v2);
+            id.setText(v3);
+            
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_checkActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Edit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        String[][] matrix=list.matrix();
+        try{
+            int cock=Integer.parseInt(index.getText())-1;
+            String v1=name.getText();
+            String v2=lastname.getText();
+            String v3=id.getText();
+            contact e=new contact(v1,v2,v3);
+            list.remove(cock);
+            list.addList(e);
+            JOptionPane.showMessageDialog(this,"El contacto ha sido agregado en la posición: "+(cock+1),"Mensaje",JOptionPane.INFORMATION_MESSAGE,null);
+            
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_addActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Edit().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

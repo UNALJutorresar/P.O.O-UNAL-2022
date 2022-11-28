@@ -4,16 +4,17 @@
  */
 package trabajo.pkgfinal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class Delete extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Add
-     */
-    public Delete() {
+    datalist list;
+    public Delete(datalist list) {
+        this.list=list;
         initComponents();
     }
 
@@ -28,10 +29,11 @@ public class Delete extends javax.swing.JFrame {
 
         lblname = new javax.swing.JLabel();
         lbllastname = new javax.swing.JLabel();
-        add = new javax.swing.JButton();
-        name = new javax.swing.JTextField();
-        lastname = new javax.swing.JTextField();
+        del = new javax.swing.JButton();
+        index = new javax.swing.JTextField();
+        data = new javax.swing.JTextField();
         exit = new javax.swing.JButton();
+        showbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,19 +41,26 @@ public class Delete extends javax.swing.JFrame {
 
         lbllastname.setText("Dato");
 
-        add.setText("¿Borrar realmente?");
-        add.addActionListener(new java.awt.event.ActionListener() {
+        del.setText("¿Borrar realmente?");
+        del.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
+                delActionPerformed(evt);
             }
         });
 
-        lastname.setEditable(false);
+        data.setEditable(false);
 
         exit.setText("Cerrar");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
+            }
+        });
+
+        showbtn.setText("Mostrar Dato");
+        showbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showbtnActionPerformed(evt);
             }
         });
 
@@ -61,20 +70,23 @@ public class Delete extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblname)
-                        .addGap(18, 18, 18)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(index, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbllastname)
                         .addGap(18, 18, 18)
-                        .addComponent(lastname))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(add)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exit)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(del)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(showbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(exit))
+                            .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,15 +94,16 @@ public class Delete extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblname)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(index, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbllastname)
-                    .addComponent(lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add)
-                    .addComponent(exit))
+                    .addComponent(del)
+                    .addComponent(exit)
+                    .addComponent(showbtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -98,55 +111,43 @@ public class Delete extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Delete.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+        try{
+            int cock=Integer.parseInt(index.getText())-1;
+            list.remove(cock);
+            JOptionPane.showMessageDialog(this,"El contacto ha sido eliminado","Mensaje",JOptionPane.INFORMATION_MESSAGE,null);
+            
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
         }
-        //</editor-fold>
-        //</editor-fold>
+    }//GEN-LAST:event_delActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Delete().setVisible(true);
-            }
-        });
-    }
+    private void showbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showbtnActionPerformed
+        String[][] matrix=list.matrix();
+        try{
+            int cock=Integer.parseInt(index.getText())-1;
+            String v1=matrix[cock][0];
+            String v2=matrix[cock][1];
+            String v3=matrix[cock][2];
+            data.setText(v1+"-"+v2+"-"+v3);
+    
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_showbtnActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton add;
+    private javax.swing.JTextField data;
+    private javax.swing.JButton del;
     private javax.swing.JButton exit;
-    private javax.swing.JTextField lastname;
+    private javax.swing.JTextField index;
     private javax.swing.JLabel lbllastname;
     private javax.swing.JLabel lblname;
-    private javax.swing.JTextField name;
+    private javax.swing.JButton showbtn;
     // End of variables declaration//GEN-END:variables
 }

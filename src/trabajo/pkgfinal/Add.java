@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
  */
 public class Add extends javax.swing.JFrame {
 
-    private datalist list;
+    datalist list;
     
-    public Add() {
-        list=new datalist();
+    public Add(datalist list) {
+        this.list=list;
         initComponents();
     }
 
@@ -26,7 +26,7 @@ public class Add extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
         lblname = new javax.swing.JLabel();
         lbllastname = new javax.swing.JLabel();
@@ -111,15 +111,15 @@ public class Add extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+    public void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
         
     }//GEN-LAST:event_exitActionPerformed
     
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+    public void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         addContact();
     }//GEN-LAST:event_addActionPerformed
-    private void addContact(){
+    public void addContact(){
     try{
         
         String v1=name.getText();
@@ -127,46 +127,15 @@ public class Add extends javax.swing.JFrame {
         String v3=id.getText();
         contact e=new contact(v1, v2, v3);
         list.addList(e);
+        System.out.println(list.convert());
+        String [][] data=list.matrix();
+        //System.out.println(data[0][1]);
         JOptionPane.showMessageDialog(this,"El contacto ha sido agregado","Mensaje",JOptionPane.INFORMATION_MESSAGE,null);
     } catch(NumberFormatException e){
         JOptionPane.showMessageDialog(null,"Campo nulo o error en formato de numero", "Error",JOptionPane.ERROR_MESSAGE);
     }
 }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Add().setVisible(true);
-            }
-        });
-    }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton exit;
